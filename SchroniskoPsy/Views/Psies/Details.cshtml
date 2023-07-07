@@ -1,0 +1,52 @@
+﻿@model SchroniskoPsy.Models.Psy
+
+@{
+    ViewData["Title"] = "Więcej Informacji";
+}
+
+<h1>Więcej Informacji</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Wiek)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Wiek)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Charakter)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Charakter)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rasa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rasa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Schronisko)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Schronisko.Nazwa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Wróć do listy</a>
+</div>

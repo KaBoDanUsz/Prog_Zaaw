@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SchroniskoPsy.Models.Psy>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<h1>Lista psów</h1>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a asp-action="Create" style="color:white;">
+        <button class="button-29" role="button">
+            Dodaj psa
+        </button>
+    </a>
+            
+}
+
+
+<table class="table">
+    
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wiek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Charakter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rasa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schronisko)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wiek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Charakter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rasa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schronisko.Nazwa)
+            </td>
+             <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Więcej informacji</a>
+             </td>
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Adoptuj</a>
+                </td>
+            }
+                @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>

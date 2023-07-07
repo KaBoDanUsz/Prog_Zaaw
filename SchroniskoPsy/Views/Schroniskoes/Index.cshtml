@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SchroniskoPsy.Models.Schronisko>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<h1>Lista schronisk</h1>
+@if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
+{
+    <button class="button-29" role="button">
+        <a asp-action="Create" style="color:white;">Dodaj schronisko</a>
+    </button>
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Miejscowosc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumerTel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ulica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miejscowosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumerTel)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Więcej informacji</a>
+            </td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        </td>
+                    
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>
